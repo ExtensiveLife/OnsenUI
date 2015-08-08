@@ -1,3 +1,7 @@
+css-components/www
+css-components/components-src/dist
+app/lib
+build
 logs/*
 !.gitkeep
 node_modules

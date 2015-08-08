@@ -25,21 +25,21 @@ var-list-header-color = $text-color
 var-list-item-color = $text-color
 var-list-item-active-background-color = $list-tap-active-background-color
 var-list-item-separator-color = $border-color
-
+var-list-item-font-family = HelveticaNeue-Light
 var-list-padding = 0
 var-list-header-font-size = 15px
 var-list-border = 1px solid var-list-item-separator-color
 
-var-list-item-margin = 0 0 0 0
+var-list-item-margin = 0 15px 0 15px
 var-list-item-padding = 0 10px 0 10px
 var-list-header-padding = 0 0 0 10px
-var-list-item-min-height = 44px
+var-list-item-min-height = 60px
 var-list-header-min-height = 24px
 var-list-header-font-weight = var-font-weight--large
 var-list-header-text-shadow = none
 
-var-list-border-top = 1px solid var-list-item-separator-color
-var-list-border-bottom = 1px solid var-list-item-separator-color
+var-list-border-top = 2px solid var-list-item-separator-color
+var-list-border-bottom = 2px solid var-list-item-separator-color
 
 
 /*! topdoc
@@ -161,11 +161,9 @@ list__item()
   border-bottom var-list-border
 
 .list__item:last-child
-  border-bottom none
 
 .list__item:first-child:last-child
   border-top none
-  border-bottom none
 
 .list__item:not(:last-child)
   retina-list-item-border()

@@ -15,8 +15,8 @@ limitations under the License.
 
 */
 
-var CORDOVA_APP = false;
-
+var CORDOVA_APP = true;
+var CORDOVA_DIR = '../../heli-app-cross/'
 ////////////////////////////////////////
 
 var gulp = require('gulp');
@@ -81,7 +81,7 @@ gulp.task('core', function() {
     .pipe(onlyES6 = $.filter('*.es6'))
     .pipe($.babel({modules: 'ignore'}))
     .pipe(onlyES6.restore())
-    .pipe($.concat('ons-core.js'))            
+    .pipe($.concat('ons-core.js'))
     .pipe($.header('/*! ons-core.js for Onsen UI v<%= pkg.version %> - ' + dateformat(new Date(), 'yyyy-mm-dd') + ' */\n', {pkg: pkg}))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('build/js/'));
@@ -196,7 +196,7 @@ gulp.task('minify-js', function() {
         path.extname = '.min.js';
       }))
       .pipe(gulp.dest('build/js/'))
-      .pipe(gulpIf(CORDOVA_APP, gulp.dest('cordova-app/www/lib/onsen/js')))
+      .pipe(gulpIf(CORDOVA_APP, gulp.dest(CORDOVA_DIR+'www/lib/onsen/js')))
       .pipe(gulp.dest('app/lib/onsen/js'))
   );
 });
@@ -228,10 +228,10 @@ gulp.task('prepare', ['html2js', 'core'], function() {
       .pipe($.babel({modules: 'ignore'}))
       .pipe(onlyES6.restore())
       .pipe($.ngAnnotate({add: true, single_quotes: true}))
-      .pipe($.concat('onsenui.js'))            
+      .pipe($.concat('onsenui.js'))
       .pipe($.header('/*! <%= pkg.name %> - v<%= pkg.version %> - ' + dateformat(new Date(), 'yyyy-mm-dd') + ' */\n', {pkg: pkg}))
       .pipe(gulp.dest('build/js/'))
-      .pipe(gulpIf(CORDOVA_APP, gulp.dest('cordova-app/www/lib/onsen/js')))
+      .pipe(gulpIf(CORDOVA_APP, gulp.dest(CORDOVA_DIR+'www/lib/onsen/js')))
       .pipe(gulp.dest('app/lib/onsen/js')),
 
     // onsenui_all.js
@@ -263,7 +263,7 @@ gulp.task('prepare', ['html2js', 'core'], function() {
       'css-components/components-src/dist/*.css',
     ])
       .pipe(gulp.dest('build/css/'))
-      .pipe(gulpIf(CORDOVA_APP, gulp.dest('cordova-app/www/lib/onsen/css')))
+      .pipe(gulpIf(CORDOVA_APP, gulp.dest(CORDOVA_DIR+'www/lib/onsen/css')))
       .pipe(gulp.dest('app/lib/onsen/css')),
 
     // stylus files
@@ -283,7 +283,7 @@ gulp.task('prepare', ['html2js', 'core'], function() {
       .pipe($.autoprefixer('> 1%', 'last 2 version', 'ff 12', 'ie 8', 'opera 12', 'chrome 12', 'safari 12', 'android 2', 'ios 6'))
       .pipe($.header('/*! <%= pkg.name %> - v<%= pkg.version %> - ' + dateformat(new Date(), 'yyyy-mm-dd') + ' */\n', {pkg: pkg}))
       .pipe(gulp.dest('build/css/'))
-      .pipe(gulpIf(CORDOVA_APP, gulp.dest('cordova-app/www/lib/onsen/css')))
+      .pipe(gulpIf(CORDOVA_APP, gulp.dest(CORDOVA_DIR+'www/lib/onsen/css')))
       .pipe(gulp.dest('app/lib/onsen/css')),
 
     // angular.js copy
@@ -302,8 +302,8 @@ gulp.task('prepare', ['html2js', 'core'], function() {
       .pipe(gulp.dest('app/lib/onsen/css/ionicons/')),
 
     // auto prepare
-    gulp.src('cordova-app/www/index.html')
-      .pipe(gulpIf(CORDOVA_APP, $.shell(['cd cordova-app; cordova prepare'])))
+    gulp.src(CORDOVA_DIR+'www/index.html')
+      .pipe(gulpIf(CORDOVA_APP, $.shell(['cd '+CORDOVA_DIR+'; cordova prepare'])))
   ).on('end', function() {
     browserSync.reload();
   });
@@ -389,7 +389,7 @@ gulp.task('serve', ['jshint', 'prepare', 'browser-sync'], function() {
   ];
 
   if (CORDOVA_APP) {
-    watched.push('cordova-app/www/*.html');
+    watched.push(CORDOVA_DIR+'www/*.html');
   }
 
   gulp.watch(watched, {
@@ -470,7 +470,7 @@ gulp.task('webdriver-download', function() {
   }
 
   if (platform === 'linux') {
-    chromeDriverUrl = 'http://chromedriver.storage.googleapis.com/2.12/chromedriver_linux64.zip'; 
+    chromeDriverUrl = 'http://chromedriver.storage.googleapis.com/2.12/chromedriver_linux64.zip';
   }
   else if (platform === 'darwin') {
     chromeDriverUrl = 'http://chromedriver.storage.googleapis.com/2.14/chromedriver_mac32.zip';
