@@ -33,7 +33,7 @@ var-list-border = 1px solid var-list-item-separator-color
 var-list-item-margin = 0 15px 0 15px
 var-list-item-padding = 0 10px 0 10px
 var-list-header-padding = 0 0 0 10px
-var-list-item-min-height = 60px
+var-list-item-min-height = 50px
 var-list-header-min-height = 24px
 var-list-header-font-weight = var-font-weight--large
 var-list-header-text-shadow = none
@@ -161,6 +161,7 @@ list__item()
   border-bottom var-list-border
 
 .list__item:last-child
+  border-bottom none
 
 .list__item:first-child:last-child
   border-top none
@@ -325,6 +326,10 @@ list__item()
   font-style normal
   font-weight normal
   content "\f105"
+
+.list__item--chevron:last-child
+  border-bottom var-list-border
+
 
 /*! topdoc
   name: Inset List
