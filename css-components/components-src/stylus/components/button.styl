@@ -307,3 +307,32 @@ button--active()
 .button--large--cta:disabled,
 .button--large--cta[disabled]
   button--disabled()
+
+
+
+
+
+/*! topdoc
+  name: Outline Button - Heli Action Button
+  class: button--heliaction
+  use: Button
+  markup:
+    <button class="button button--heliaction">Button</button>
+    <button class="button button--heliaction" disabled>Button</button>
+*/
+.button--heliaction
+  background-color transparent
+  border 1px solid var-button-background-color
+  color var-button-background-color
+  width 100%
+  margin 5px
+
+.button--heliaction:active
+  background-color alpha(var-button-background-color, var-alpha-lighten)
+  border 1px solid var-button-background-color
+  color var-button-background-color
+  opacity 1
+
+.button--heliaction:hover
+  border 1px solid var-button-background-color
+  transition 0
