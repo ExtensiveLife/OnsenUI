@@ -53,6 +53,7 @@ button-bar()
   white-space nowrap
   margin 0
   padding 0
+  width 100%
 
 button-bar__item()
   reset-font()
@@ -78,13 +79,13 @@ button-bar__item()
   hide-input()
 
 .button-bar__item:first-child > .button-bar__button
-  border-left 1px solid var-button-bar-color
-  border-right 1px solid var-button-bar-color
+  border-left 2px solid var-button-bar-color
+  border-right 2px solid var-button-bar-color
   border-top-left-radius var-border-radius
   border-bottom-left-radius var-border-radius
 
 .button-bar__item:last-child > .button-bar__button
-  border-right 1px solid var-button-bar-color
+  border-right 2px solid var-button-bar-color
   border-top-right-radius var-border-radius
   border-bottom-right-radius var-border-radius
 
@@ -98,8 +99,7 @@ button-bar__item()
   border-bottom var-button-bar-border-bottom
   border-right 1px solid var-button-bar-color
   font-weight var-font-weight
-  padding 0 8px
-  height 27px
+  height 33px
   line-height 27px
   font-size 13px
   width 100%
