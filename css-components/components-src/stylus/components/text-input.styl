@@ -40,21 +40,24 @@ var-text-input-large-font = 44px
 
 input()
   reset-input()
+  reset-font()
 
 input--disabled()
   disabled()
 
-text-input(text-color, text-size, text-weight)
+text-input()
   input()
   letter-spacing var-letter-spacing
   border var-input-border
   border-radius var-border-radius
   background-color var-input-bg-color
   box-shadow var-box-shadow--text-input
-  color text-color
+  color var-input-text-color
+  padding 4px 8px 0 8px
   margin 0
-  font-size text-size
-  font-weight text-weight
+  font-size var-text-input-font-size
+  height var-text-input-height
+  font-weight var-font-weight
   box-sizing border-box
 
 text-input--disabled()
@@ -68,7 +71,7 @@ text-input--invalid()
   color var-input-invalid-text-color
 
 .text-input
-  text-input(var-input-text-color, var-text-input-font-size, var-font-weight)
+  text-input()
 
 .text-input::-webkit-input-placeholder,
 .text-input::-moz-placeholder,
@@ -96,7 +99,7 @@ text-input--invalid()
 */
 
 .text-input--transparent
-  text-input(var-input-text-color, var-text-input-font-size, var-font-weight)
+  text-input()
   border none
   background-color transparent
   padding-left 0
@@ -130,10 +133,8 @@ text-input--invalid()
 */
 
 .text-input--underbar
-  text-input(var-text-input-hightlight-color, var-text-input-large-font, bold)
-  width 100%
+  text-input()
   border none
-  text-align center
   background-color transparent
   border-bottom 1px solid var-text-input-border-color
   border-radius 0px
@@ -153,6 +154,52 @@ text-input--invalid()
 
 
 .text-input--underbar:invalid
+  text-input--invalid()
+  border none
+  background-color transparent
+  border-bottom 1px solid var-input-invalid-border-color
+
+
+
+
+/*! topdoc
+  name: Underbar Text Input - For Heli Diary
+  class: text-input--helidiary
+  markup:
+    <input type="text" class="text-input--helidiary" placeholder="text" value="">
+    <br>
+    <input type="text" class="text-input--helidiary" placeholder="text" value="" disabled>
+*/
+
+.text-input--helidiary
+  text-input()
+  border none
+  background-color transparent
+  border-bottom 1px solid var-text-input-border-color
+  border-radius 0px
+  font-size var-text-input-large-font
+  width 100%
+  height 100%
+  text-align center
+  color var-text-input-hightlight-color
+  
+ /*! top
+
+.text-input--helidiary:disabled
+  text-input--disabled()
+  border none
+  background-color transparent
+  border-bottom 1px solid var-text-input-border-color
+
+.text-input--helidiary:disabled::-webkit-input-placeholder,
+.text-input--helidiary:disabled::-moz-placeholder,
+.text-input--helidiary:disabled:-ms-input-placeholder
+  webkit-input-placeholder()
+  border none
+  background-color transparent
+
+
+.text-input--helidiary:invalid
   text-input--invalid()
   border none
   background-color transparent

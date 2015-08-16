@@ -25,18 +25,21 @@ var-list-header-color = $text-color
 var-list-item-color = $text-color
 var-list-item-active-background-color = $list-tap-active-background-color
 var-list-item-separator-color = $border-color
-var-list-item-font-family = HelveticaNeue-Light
+
 var-list-padding = 0
 var-list-header-font-size = 15px
 var-list-border = 1px solid var-list-item-separator-color
 
-var-list-item-margin = 0 15px 0 15px
+var-list-item-margin = 0 0 0 0
 var-list-item-padding = 0 10px 0 10px
 var-list-header-padding = 0 0 0 10px
-var-list-item-min-height = 50px
+var-list-item-min-height = 44px
 var-list-header-min-height = 24px
 var-list-header-font-weight = var-font-weight--large
 var-list-header-text-shadow = none
+
+var-list-border-top = 1px solid var-list-item-separator-color
+var-list-border-bottom = 1px solid var-list-item-separator-color
 
 
 /*! topdoc
@@ -126,6 +129,8 @@ list__item()
   list()
   padding var-list-padding
   background-color var-list-background-color
+  border-top var-list-border-top
+  border-bottom var-list-border-bottom
   background-color var-list-background-color
   retina-list-border()
 
@@ -134,7 +139,7 @@ list__item()
   padding var-list-item-padding
   margin var-list-item-margin
   border-top none
-  border-bottom none
+  border-bottom var-list-border
   color var-list-item-color
   background-color transparent
   min-height var-list-item-min-height
@@ -150,6 +155,17 @@ list__item()
 .list__item_active:active
   background-color var-list-item-active-background-color
   transition none
+
+.list__item:first-child
+  border-top none
+  border-bottom var-list-border
+
+.list__item:last-child
+  border-bottom none
+
+.list__item:first-child:last-child
+  border-top none
+  border-bottom none
 
 .list__item:not(:last-child)
   retina-list-item-border()
@@ -289,7 +305,6 @@ list__item()
 
 .list__item--chevron
   transition background-color 0.2s linear
-  border-bottom var-list-border
   overflow hidden
 
 .list__item--chevron:active
@@ -469,3 +484,74 @@ list__item()
   padding-right: 8px;
   float: right;
 }
+
+
+/*! topdoc
+  name: List Item with Chevron - For Sliding Menu
+  class: list__item--helimenu
+  use: List
+  markup:
+    <ul class="list">
+      <li class="list__item list__item--helimenu">
+        Tappable Item
+      </li>
+      <li class="list__item list__item--helimenu">
+        Tappable Item
+      </li>
+    </ul>
+ */
+
+.list__item--helimenu
+  transition background-color 0.2s linear
+  overflow hidden
+
+.list__item--helimenu:active
+  background-color var-list-item-active-background-color
+  transition none
+
+.list__item--helimenu:hover
+  transition none
+
+.list__item--helimenu:before
+  position absolute
+  right 16px
+  top 50%
+  color var-list-item-separator-color
+  line-height 28px
+  height 28px
+  transform translateY(-50%)
+  font-size 28px
+  font-family FontAwesome
+  font-style normal
+  font-weight normal
+  content "\f105"
+
+.list__item--helimenu:first-child
+  border-top none
+  border-bottom var-list-border
+
+.list__item--helimenu:last-child
+  border-bottom var-list-border
+
+
+
+
+/*! topdoc
+  name: List Item with NO border
+  class: list__item--noborder
+  use: List
+  markup:
+    <ul class="list">
+      <li class="list__item list__item--noborder">
+        Tappable Item
+      </li>
+      <li class="list__item list__item--noborder">
+        Tappable Item
+      </li>
+    </ul>
+ */
+
+
+.list__item--noborder
+  border-top none
+  border-bottom none
