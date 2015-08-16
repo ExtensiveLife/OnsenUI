@@ -134,7 +134,7 @@ list__item()
   padding var-list-item-padding
   margin var-list-item-margin
   border-top none
-  border-bottom var-list-border
+  border-bottom none
   color var-list-item-color
   background-color transparent
   min-height var-list-item-min-height
@@ -150,16 +150,6 @@ list__item()
 .list__item_active:active
   background-color var-list-item-active-background-color
   transition none
-
-.list__item:first-child
-  border-top none
-  border-bottom var-list-border
-
-.list__item:last-child
-  border-bottom none
-
-.list__item:first-child:last-child
-  border-top none
 
 .list__item:not(:last-child)
   retina-list-item-border()
@@ -299,6 +289,7 @@ list__item()
 
 .list__item--chevron
   transition background-color 0.2s linear
+  border-bottom var-list-border
   overflow hidden
 
 .list__item--chevron:active
@@ -321,10 +312,6 @@ list__item()
   font-style normal
   font-weight normal
   content "\f105"
-
-.list__item--chevron:last-child
-  border-bottom var-list-border
-
 
 /*! topdoc
   name: Inset List
