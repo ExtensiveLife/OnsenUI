@@ -47,7 +47,6 @@ var-button-bar-active-background-color = alpha(var-button-bar-color, var-alpha-l
 */
 
 button-bar()
-  reset-font()
   display table
   table-layout fixed
   white-space nowrap
@@ -56,7 +55,6 @@ button-bar()
   width 100%
 
 button-bar__item()
-  reset-font()
   display table-cell
   width auto
   border-radius 0
@@ -91,7 +89,6 @@ button-bar__item()
   border-bottom-right-radius var-border-radius
 
 .button-bar__button
-  reset-font()
   border-radius inherit
   background-color transparent
   color var-button-bar-color
@@ -114,9 +111,9 @@ button-bar__item()
   border-top var-button-bar-border-top
   border-bottom var-button-bar-border-bottom
   border-right 1px solid var-button-bar-color
-  height 27px
-  line-height 27px
-  font-size 13px
+  height 36px
+  line-height 12px
+  font-size 30px
   width 100%
   transition none
 
