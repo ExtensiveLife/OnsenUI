@@ -22,6 +22,8 @@
 var-text-input-font-size = 15px
 var-text-input-height = 31px
 var-text-input-border-color = var-input-border-color
+var-text-input-hightlight-color = $highlight-color
+var-text-input-large-font = 44px
 
 /*! topdoc
   name: Text Input
@@ -38,22 +40,21 @@ var-text-input-border-color = var-input-border-color
 
 input()
   reset-input()
-  reset-font()
 
 input--disabled()
   disabled()
 
-text-input()
+text-input(text-color, text-size, text-weight)
   input()
   letter-spacing var-letter-spacing
   border var-input-border
   border-radius var-border-radius
   background-color var-input-bg-color
   box-shadow var-box-shadow--text-input
-  color var-input-text-color
+  color text-color
   margin 0
-  font-size var-text-input-font-size
-  font-weight var-font-weight
+  font-size text-size
+  font-weight text-weight
   box-sizing border-box
 
 text-input--disabled()
@@ -67,7 +68,7 @@ text-input--invalid()
   color var-input-invalid-text-color
 
 .text-input
-  text-input()
+  text-input(var-input-text-color, var-text-input-font-size, var-font-weight)
 
 .text-input::-webkit-input-placeholder,
 .text-input::-moz-placeholder,
@@ -95,7 +96,7 @@ text-input--invalid()
 */
 
 .text-input--transparent
-  text-input()
+  text-input(var-input-text-color, var-text-input-font-size, var-font-weight)
   border none
   background-color transparent
   padding-left 0
@@ -129,7 +130,7 @@ text-input--invalid()
 */
 
 .text-input--underbar
-  text-input()
+  text-input(var-text-input-hightlight-color, var-text-input-large-font, bold)
   width 100%
   border none
   text-align center
